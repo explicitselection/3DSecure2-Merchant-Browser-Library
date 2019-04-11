@@ -1,0 +1,66 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <style>
+        .wrap {
+            width: 50%;
+            border: 2px solid black;
+            padding: 10px;
+        }
+        pre#results {
+            white-space: pre-wrap;       /* Since CSS 2.1 */
+            white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+            white-space: -pre-wrap;      /* Opera 4-6 */
+            white-space: -o-pre-wrap;    /* Opera 7 */
+            word-wrap: break-word;       /* Internet Explorer 5.5+ */
+        }
+    </style>
+    <script src="https://github.com/explicitselection/3DSecure2-Merchant-Browser-Library/blob/master/3dsbrowser.min.js"></script>
+</head>
+<body>
+
+<h1>Script:</h1>
+<div class="wrap">
+    <pre>
+EMV3DSBrowserLibrary.get(function (components) {
+    // components is array of {key: 'foo', value: 'component value'}
+    console.log(components);
+})
+
+// or
+
+EMV3DSBrowserLibrary.getPromise().then(function (components) {
+    // components is array of {key: 'foo', value: 'component value'}
+    console.log(components);
+})
+    </pre>
+</div>
+<h1>Results:</h1>
+<h3 id="version"></h3>
+<div class="wrap">
+    <pre id="results">
+    </pre>
+</div>
+
+
+<script>
+
+    document.getElementById('version').innerText = 'EMV3DSBrowserLibrary ' + EMV3DSBrowserLibrary.VERSION;
+
+    EMV3DSBrowserLibrary.get(function (components) {
+        // components is array of {key: 'foo', value: 'component value'}
+        console.log(components);
+    })
+
+    // or
+
+    EMV3DSBrowserLibrary.getPromise().then(function (components) {
+        // components is array of {key: 'foo', value: 'component value'}
+        console.log(components);
+        document.getElementById('results').innerText = JSON.stringify(components, undefined, 2);
+    })
+</script>
+</body>
+</html>
+
+
